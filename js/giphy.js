@@ -52,7 +52,9 @@
 
 var outputGif = function outputGif(data){
     var gifResponse = JSON.parse(data);
-    gifOutput.innerHTML = gifResponse;
+    var newGif = document.createElement("img");
+    newGif.src = gifResponse.data.images.original.url;
+    gifOutput.appendChild(newGif);
 }
     
 })()
