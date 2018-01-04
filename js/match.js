@@ -2,8 +2,9 @@
 (function(){
     var userName = document.getElementById("userName");
     var matchButton = document.getElementById("matchButton");
-	var url = 'http://api.petfinder.com/pet.getRandom';
+	var url = 'http://api.petfinder.com/pet.find';
 	var apiKey = '8df848db72f6484bc7856f389d706dcc';
+	var lastOffset = 0;
 
     matchButton.addEventListener("click", function(){
         // Within $.ajax{...} is where we fill out our query 
@@ -14,16 +15,26 @@
 			data: {
 				key: apiKey,
 				animal: 'dog',
-				'location': 30071,
+				size: 'M',
+				sex: 'F',
+				age: 'Baby',
+				count: 1,
+				offset: lastOffset,
+				location: '30071',
 				output: 'basic',
 				format: 'json'
 			},
 			// Here is where we handle the response we got back from Petfinder
 			success: function( response ) {
+				if (response == undefined){
+					matchOutput.innerHTML = "Oh no.  NO matches!"
+				} else
+				{
 				console.log(response); // debugging
-				var dogName = response.petfinder.pet.name.$t;
-				var img = response.petfinder.pet.media.photos.photo[0].$t;
-				var id = response.petfinder.pet.id.$t;
+				var dogName = response.petfinder.pets.pet.name.$t;
+				var img = response.petfinder.pets.pet.media.photos.photo[1].$t;
+				var id = response.petfinder.pets.pet.id.$t;
+				lastOffset = response.petfinder.lastOffset.$t;
 
 				var newName = document.createElement('a');
 				var newDiv = document.createElement('div');
@@ -40,6 +51,7 @@
 				newDiv.appendChild(newName);
 				list.appendChild(newDiv);
 				list.appendChild(newImg);
+				};
 			}
 		});
     });
