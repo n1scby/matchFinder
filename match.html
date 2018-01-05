@@ -13,6 +13,10 @@
                         <input type="text" id="userName">
                     </div>
                     <div>
+                        <label for="zipcode">Please enter your zipcode: </label>
+                        <input type="number" id="zipcode">
+                    </div>
+                    <div>
                         <label>How Tall are you? </label>
                         <input type="number" id="heightFeet">
                         <label for="heightFeet">feet</label>
@@ -39,8 +43,45 @@
                             </select>
                     </div>
                     <div>
+                            <label for="eventType">You really enjoy</label>
+                                <select id="eventType">
+                                    <option value="theater">Attending theatrical productions</option>
+                                    <option value="computer">Staying home alone playing on a computer</option>
+                                    <option value="hanging">Grabbing a beer and hanging with friends</option>
+                                    <option value="cosplay">Cosplay, my friend!</option>
+                                    <option value="sports">Sports!</option>
+                                    <option value="couch">Snuggling on the couch while watching Netflix</option>
+                                </select>
+                        </div>
+                        
+                        <div>
+                                <label for="hogwarts">Which house do you most identify with?</label>
+                                    <select id="hogwarts">
+                                        <option value="Gryffindor">Gryffindor</option>
+                                        <option value="Hufflepuff">Hufflepuff</option>
+                                        <option value="Ravenclaw">Ravenclaw</option>
+                                        <option value="Slytherin">Slytherin</option>
+                                    </select>
+                            </div>
+                            <div>
+                                    <label for="maintenance">You have been told that you are:</label>
+                                        <select id="maintenance">
+                                            <option value="high">High Maintenance</option>
+                                            <option value="low">Low Maintenance</option>
+                                            <option value="no">No Maintenance</option>
+                                        </select>
+                                </div>
 
-                    </div>
+                                <div>
+                                        <label for="food">Your favorite type of food is:</label>
+                                            <select id="food">
+                                                <option value="Mexican">Mexican, amigo!</option>
+                                                <option value="American">Good ol' American</option>
+                                                <option value="Italian">Italian</option>
+                                                <option value="Chinese">chinese</option>
+                                                <option value="everything">Everything!</option>
+                                            </select>
+                                    </div>
 
                     <button type="button" id="matchButton">Get Your Match!</button>
                 </form>
