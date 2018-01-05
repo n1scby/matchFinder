@@ -1,6 +1,6 @@
 "use strict";
-(function(){
-    var userName = document.getElementById("userName");
+(function () {
+	var userName = document.getElementById("userName");
 	var matchButton = document.getElementById("matchButton");
 	var userName = document.getElementById("userName");
 	var heightFeet = document.getElementById("heightFeet");
@@ -19,91 +19,199 @@
 	var animalSize = '';
 	var dogBreed = '';
 	var animalSex = '';
-	var matchLocation = '';
+	var matchLocation = "";
 
-    matchButton.addEventListener("click", function(){
-        // Within $.ajax{...} is where we fill out our query 
+	matchButton.addEventListener("click", function () {
+		// determine values to pass
+		getAnimalType();
+		getAnimalSex();
+		getAnimalAge();
+		getAnimalSize();
+		getDogBreed();
+		getLocation();
+
+
+		// Within $.ajax{...} is where we fill out our query 
 		$.ajax({
 			url: url,
 			jsonp: "callback",
 			dataType: "jsonp",
 			data: {
 				key: apiKey,
-				animal: 'dog',
-				size: 'M',
-				sex: 'F',
-				age: '',
-				breed: '',
+				animal: animalType,
+				size: animalSize,
+				sex: animalSex,
+				age: animalAge,
+				breed: dogBreed,
 				count: 1,
 				offset: lastOffset,
-				location: '30071',
+				location: matchLocation,
 				output: 'basic',
 				format: 'json'
 			},
 			// Handle the response back from Petfinder
-//			success: function(response) {
-			success: function(response) {
+			//			success: function(response) {
+			success: function (response) {
 				displayMatch(response);
 			},
-			error: function(request, error) {
+			error: function (request, error) {
 				console.log("Request: " + JSON.stringify(request) + "  Error: " + error);
 				match.Output('Sorry, No Matches at this Time.');
 			}
-				
-			
-			});
-		
+
+
+		});
+
 	});
 
-	var getAnimalType = function getAnimalType(){
+	var getAnimalType = function getAnimalType() {
 		if (eventType.value == "theater") {
 			animalType = "bird";
 			return;
-		} 
+		}
 		if (eventType.value == "computer" || eventType.value == "cosplay") {
-			animalyType = "cat";
+			animalType = "cat";
 			return;
 		}
-		if (howarts.value == "Slytherin") {
+		if (hogwarts.value == "Slytherin") {
 			animalType = "reptile";
 			return;
 		}
-		if (maintenance == "noMaintenance") {
+		if (maintenance.value == "no") {
 			animalType = "barnyard";
 			return
 		}
 
 		animalType = "dog";
+		return;
 	}
+
+	var getAnimalAge = function getAnimalAge() {
+		switch (walkingStyle.value) {
+			case "beach":
+			case "stroll":
+				animalAge = "Adult";
+				break;
+			case "hiking":
+				animalAge = "Young";
+				break;
+			case "short":
+				animalAge = "Senior";
+				break;
+			case "skipping":
+				animalAge = "Baby";
+				break;
+			default:
+				animalAge = "adult";
+		}
+		return;
+	}
+
+
+	var getAnimalSex = function getAnimalSex(){
+		if (sexualPreference.value == "male"){
+			animalSex = "M";
+			return;
+		}
+		if (sexualPreference.value == "female"){
+			animalSex = "F";
+			return;
+		}
+		animalSex = "";  //let api choose.
+	}
+
+	var getAnimalSize = function getAnimalSize() {
+
+		// Default is blank.  Let the api choose.
+		animalSize = "";
+
+		// All high maint people get small animals
+		if (maintenance.value == "high") {
+			animalSize = "S";
+			return;
+		}
+
 	
-	var displayMatch = function displayMatch(response){
-		if (response.petfinder.pets.pet.name == undefined){
-			matchOutput.innerHTML = "Oh no.  NO matches!"
+
+		// If you are tall, then you get either XL or L.
+		if (heightFeet.value >= 6) {
+			if (heightInches.value >= 5) {
+				animalSize = "XL";
+			} else {
+				animalSize = "L";
+			}
+		}
+		return;
+
+	}
+
+	var getLocation = function getLocation(){
+		if (zipcode.value < 99999 && zipcode.value > 1)
+		{
+			matchLocation = zipcode.value;
+
+		}
+		return;
+	}
+
+	var getDogBreed = function getDogBreed() {
+		// default breed = "", let the api choose
+		dogBreed = "";
+		if (animalType == "dog") {
+			if (animalSize == "S" && food.value == "Mexican") {
+				dogBreed = "Chihuahua";
+				return;
+			}
+			if (food.value == "American" && animalSize == "XL") {
+				dogBreed = "Great Dane";
+				return;
+			}
+			if (food.value == "Italian") {
+				dogBreed = "Greyhound";
+				return;
+			}
+		}
+		return;
+	}
+
+
+
+
+	var displayMatch = function displayMatch(response) {
+		if (response.petfinder.pets == undefined || response.petfinder.pets.pet == undefined) {
+			matchOutput.innerHTML = "Oh no.  NO matches!";
+			lastOffset = 0;
+
+		} else {
+			console.log(response); // debugging
+			var dogName = response.petfinder.pets.pet.name.$t;
+		if (response.petfinder.pets.pet.media.photos == undefined){
+		   img = "";
 		} else
 		{
-		console.log(response); // debugging
-		var dogName = response.petfinder.pets.pet.name.$t;
-		var img = response.petfinder.pets.pet.media.photos.photo[1].$t;
-		var id = response.petfinder.pets.pet.id.$t;
-		lastOffset = response.petfinder.lastOffset.$t;
+			var img = response.petfinder.pets.pet.media.photos.photo[1].$t;
+			
+		}
+			var id = response.petfinder.pets.pet.id.$t;
+			lastOffset = response.petfinder.lastOffset.$t;
 
-		var newName = document.createElement('a');
-		var newDiv = document.createElement('div');
-		newName.textContent = dogName;
-		newName.href = 'https://www.petfinder.com/petdetail/' + id;
+			var newName = document.createElement('a');
+			var newDiv = document.createElement('div');
+			newName.textContent = dogName;
+			newName.href = 'https://www.petfinder.com/petdetail/' + id;
 
-		var newImg = document.createElement('img');
-		newImg.src = img;
-		
-		var list = document.createElement("div");
-		list.setAttribute("id", "List");
-		document.body.appendChild(list);
+			var newImg = document.createElement('img');
+			newImg.src = img;
 
-		newDiv.appendChild(newName);
-		list.appendChild(newDiv);
-		list.appendChild(newImg);
+			var list = document.createElement("div");
+			list.setAttribute("id", "List");
+			document.body.appendChild(list);
+
+			newDiv.appendChild(newName);
+			list.appendChild(newDiv);
+			list.appendChild(newImg);
 		};
-	}	
+	}
 
 
 })()
