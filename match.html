@@ -10,18 +10,28 @@
 
 <body>
     <header>
-        <nav>
-            <ul>
-                <li>
-                    <a href="index.html">Home</a>
-                </li>
-                <li>
-                    <a href="match.html">Get Your Match</a>
-                </li>
-                <li>
-                    <a href="giphy.html">Get a Gif</a>
-                </li>
-        </nav>
+            <header>
+                    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                        <a class="navbar-brand" href="#">Front End Project</a>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav mr-auto">
+                                <li class="nav-item pr-3">
+                                    <a href="index.html">Home</a>
+                                </li>
+                                <li class="nav-item pr-3">
+                                    <a href="match.html">Get Your Match</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="giphy.html">Get a Gif</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                </header>
     </header>
 
     <main>
@@ -40,7 +50,7 @@
                 <input type="number" id="zipcode">
             </div>
             <div>
-                <label>How Tall are you? </label>
+                <label>How tall are you? </label>
                 <input type="number" id="heightFeet">
                 <label for="heightFeet">feet</label>
                 <input type="number" id="heightInches">
@@ -48,7 +58,8 @@
             </div>
             <div>
                 <label for="sexualPreference">Which do you prefer?</label>
-                <select id="sexualPreference">
+                <select id="sexualPreference" required>
+                    <option value=""> -- select an option --</option>
                     <option value="male">Male</option>
                     <option value="female">Female</option>
                     <option value="either">I'm cool with either one</option>
@@ -56,8 +67,21 @@
                 </select>
             </div>
             <div>
+                    <label for="food">Your favorite type of food is:</label>
+                    <select id="food" required>
+                        <option value=""> -- select an option --</option>    
+                        <option value="Mexican">Mexican, amigo!</option>
+                        <option value="American">Good ol' American</option>
+                        <option value="Italian">Italian</option>
+                        <option value="Chinese">Chinese</option>
+                        <option value="everything">Everything!</option>
+                    </select>
+                </div>
+    
+            <div>
                 <label for="walkingStyle">Which do you prefer?</label>
                 <select id="walkingStyle">
+                    <option disabled selected> -- select an option --</option>                        
                     <option value="beach">Long walks on the beach</option>
                     <option value="hiking">Hiking with a best friend</option>
                     <option value="short">Short walk to the refrigerator</option>
@@ -66,8 +90,9 @@
                 </select>
             </div>
             <div>
-                <label for="eventType">You really enjoy</label>
-                <select id="eventType">
+                <label for="eventType">You really enjoy:</label>
+                <select id="eventType" required>
+                    <option value=""> -- select an option --</option>    
                     <option value="theater">Attending theatrical productions</option>
                     <option value="computer">Staying home alone playing on a computer</option>
                     <option value="hanging">Grabbing a beer and hanging with friends</option>
@@ -79,7 +104,8 @@
 
             <div>
                 <label for="hogwarts">Which house do you most identify with?</label>
-                <select id="hogwarts">
+                <select id="hogwarts" requireds>
+                    <option value=""> -- select an option --</option>    
                     <option value="Gryffindor">Gryffindor</option>
                     <option value="Hufflepuff">Hufflepuff</option>
                     <option value="Ravenclaw">Ravenclaw</option>
@@ -88,34 +114,26 @@
             </div>
             <div>
                 <label for="maintenance">You have been told that you are:</label>
-                <select id="maintenance">
+                <select id="maintenance" required>
+                    <option value=""> -- select an option --</option>    
                     <option value="high">High Maintenance</option>
                     <option value="low">Low Maintenance</option>
                     <option value="no">No Maintenance</option>
                 </select>
             </div>
 
-            <div>
-                <label for="food">Your favorite type of food is:</label>
-                <select id="food">
-                    <option value="Mexican">Mexican, amigo!</option>
-                    <option value="American">Good ol' American</option>
-                    <option value="Italian">Italian</option>
-                    <option value="Chinese">chinese</option>
-                    <option value="everything">Everything!</option>
-                </select>
-            </div>
-
+ 
             <button type="button" id="matchButton">Get Your Match!</button>
         </form>
 
         <div id="matchOutput"></div>
     </main>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="js/match.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
-</body>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="js/match.js"></script>
+ </body>
 
 </html>
