@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy"
         crossorigin="anonymous">
+    <link rel="stylesheet" href="css/match.css">
     <title>Find Your Match!</title>
 </head>
 
@@ -36,40 +37,39 @@
     </header>
 
     <main>
-        <div class="row">
-            <section class="col-md-6">
-                <div class="p-4">
+            <div class="p-3 mb-2 ">
                     <h1>Find Your Match!</h1>
                     <p>Are you looking for the perfect someone to share your life with? Fill out this brief questionaire to
                         find your match.
                     </p>
                 </div>
-                </section>
-                </div>
-                <div class="row">
-                <section class="col-md-6">
+            
+        <div class="row">
+              
+            <section class="col-md-6">
+                
                 <form class="pl-4" action="#" method="POST">
-                    <div class="form-row pb-2 mr-2">
-                        <label class="col-md-4 text-right" for="userName">Name: </label>
+                    <div class="row pb-2 mr-2">
+                        <label class="col-md-5 text-right" for="userName">Name: </label>
                         <input class="col-md-6 form-control" type="text" id="userName">
                     </div>
-                    <div class="form-row pb-2 mr-2">
-                        <label class="col-md-4 text-right" for="zipcode">Please enter your zipcode: </label>
-                        <input class="col-md-6 form-control" type="number" id="zipcode">
+                    <div class="row pb-2 mr-2">
+                        <label class="col-md-5 text-right" for="zipcode">Please enter your zipcode: </label>
+                        <input class="col-md-6 form-control width-3" type="number" id="zipcode" min="1" max="99999">
                     </div>
-                    <div class="form-row pb-2 mr-2">
-                        <label class="col-md-4 text-right">How tall are you? </label>
-                        <div class="col-md-3">
-                            <input type="number" id="heightFeet" class="form-control">
-                            <label for="heightFeet">feet</label>
+                    <div class="row pb-2 mr-2">
+                        <label class="col-md-5 text-right">How tall are you? </label>
+                        <div class="col-md-3 pl-0">
+                            <input type="number" id="heightFeet" class=" w-50 form-control d-inline">
+                            <label for="heightFeet maxlength="1">feet</label>
                         </div>
-                        <div class="col-md-3">
-                            <input type="number" id="heightInches" class="form-control">
+                        <div class="col-md-3 ">
+                            <input type="number" id="heightInches" class="w-50 form-control d-inline" maxlength="2">
                             <label for="heightInches">inches</label>
                         </div>
                     </div>
-                    <div class="form-row pb-2 mr-2">
-                        <label class="col-md-4 text-right" for="sexualPreference">Which do you prefer?</label>
+                    <div class="row pb-2 mr-2">
+                        <label class="col-md-5 text-right" for="sexualPreference">Which do you prefer?</label>
                         <select class="col-md-6 form-control" id="sexualPreference" required>
                             <option value=""> -- select an option --</option>
                             <option value="male">Male</option>
@@ -78,8 +78,8 @@
 
                         </select>
                     </div>
-                    <div class="form-row pb-2 mr-2">
-                        <label class="col-md-4 text-right" for="food">Your favorite type of food is:</label>
+                    <div class="row pb-2 mr-2">
+                        <label class="col-md-5 text-right" for="food">Your favorite type of food is:</label>
                         <select class="col-md-6 form-control" id="food" required>
                             <option value=""> -- select an option --</option>
                             <option value="Mexican">Mexican, amigo!</option>
@@ -90,8 +90,8 @@
                         </select>
                     </div>
 
-                    <div class="form-row pb-2 mr-2">
-                        <label class="col-md-4 text-right" for="walkingStyle">Which do you prefer?</label>
+                    <div class="row pb-2 mr-2">
+                        <label class="col-md-5 text-right" for="walkingStyle">Which do you prefer?</label>
                         <select class="col-md-6 form-control" id="walkingStyle">
                             <option disabled selected> -- select an option --</option>
                             <option value="beach">Long walks on the beach</option>
@@ -101,8 +101,8 @@
                             <option value="skipping">Skipping!</option>
                         </select>
                     </div>
-                    <div class="form-row pb-2 mr-2">
-                        <label class="col-md-4 text-right" for="eventType">You really enjoy:</label>
+                    <div class="row pb-2 mr-2">
+                        <label class="col-md-5 text-right" for="eventType">You really enjoy:</label>
                         <select class="col-md-6 form-control" id="eventType" required>
                             <option value=""> -- select an option --</option>
                             <option value="theater">Attending theatrical productions</option>
@@ -114,8 +114,8 @@
                         </select>
                     </div>
 
-                    <div class="form-row pb-2 mr-2">
-                        <label class="col-md-4 text-right" for="hogwarts">Which house do you most identify with?</label>
+                    <div class="row pb-2 mr-2">
+                        <label class="col-md-5 text-right" for="hogwarts">Which house do you most identify with?</label>
                         <select class="col-md-6 form-control" id="hogwarts" requireds>
                             <option value=""> -- select an option --</option>
                             <option value="Gryffindor">Gryffindor</option>
@@ -124,8 +124,8 @@
                             <option value="Slytherin">Slytherin</option>
                         </select>
                     </div>
-                    <div class="form-row pb-2 mr-2">
-                        <label class="col-md-4 text-right" for="maintenance">You have been told that you are:</label>
+                    <div class="row pb-2 mr-2">
+                        <label class="col-md-5 text-right" for="maintenance">You have been told that you are:</label>
                         <select class="col-md-6 form-control" id="maintenance" required>
                             <option value=""> -- select an option --</option>
                             <option value="high">High Maintenance</option>
@@ -138,9 +138,8 @@
                     <button type="button" id="matchButton">Get Your Match!</button>
                 </form>
             </section>
-            <aside class="col-md-6">
+            <aside id="matchOutput"  class="col-md-6" >            
 
-                <div id="matchOutput">This is where the output goes</div>
 
             </aside>
 

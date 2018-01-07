@@ -10,6 +10,7 @@
 	var eventType = document.getElementById("eventType");
 	var hogwarts = document.getElementById("hogwarts");
 	var maintenance = document.getElementById("maintenance");
+	var matchOutput = document.getElementById("matchOutput");
 	var food = document.getElementById("food");
 	var url = 'http://api.petfinder.com/pet.find';
 	var apiKey = '8df848db72f6484bc7856f389d706dcc';
@@ -184,7 +185,7 @@
 
 		} else {
 			console.log(response); // debugging
-			var dogName = response.petfinder.pets.pet.name.$t;
+			var animalName = response.petfinder.pets.pet.name.$t;
 		if (response.petfinder.pets.pet.media.photos == undefined){
 		   img = "";
 		} else
@@ -195,21 +196,68 @@
 			var id = response.petfinder.pets.pet.id.$t;
 			lastOffset = response.petfinder.lastOffset.$t;
 
-			var newName = document.createElement('a');
-			var newDiv = document.createElement('div');
-			newName.textContent = dogName;
-			newName.href = 'https://www.petfinder.com/petdetail/' + id;
+		// Create Row
+			var newRow = document.createElement("div");
+			newRow.classList.add("cardStyle")
+		//	newRow.classList.add("row");
 
-			var newImg = document.createElement('img');
-			newImg.src = img;
+			// Create Card Div
+		//	var newName = document.createElement('a');
+			var cardDiv = document.createElement('div');
+			cardDiv.classList.add("card");
+			cardDiv.classList.add("cardStyle");
+		//	cardDiv.classList.add("offset-md-1");
+		//	cardDiv.classList.add("col-md-5");
 
-			var list = document.createElement("div");
-			list.setAttribute("id", "List");
-			document.body.appendChild(list);
+			// Create img for card
+			var animalPic = document.createElement("img");
+			animalPic.src = img;
+			animalPic.classList.add("card-img-top");
 
-			newDiv.appendChild(newName);
-			list.appendChild(newDiv);
-			list.appendChild(newImg);
+			// Create card body
+			var cardBody = document.createElement("div");
+			cardBody.classList.add("card-body");
+
+			// Create card title
+			var cardTitle = document.createElement("h5");
+			cardTitle.classList.add("card-title");
+			cardTitle.innerText = animalName;
+
+			// Create paragraph with animal description
+			var cardInfo = document.createElement("p");
+			cardInfo.classList.add("card-text");
+
+
+			// Create link to Animal Info
+			var cardLink = document.createElement("a");
+			cardLink.href= 'https://www.petfinder.com/petdetail/' + id;
+			cardLink.innerText = "More Info";
+			cardLink.classList.add("btn");
+			cardLink.classList.add("btn-primary");
+
+			// Add elements to Aside
+
+			cardDiv.appendChild(animalPic);
+			cardBody.appendChild(cardTitle);
+			cardBody.appendChild(cardInfo);
+			cardBody.appendChild(cardLink);
+			cardDiv.appendChild(cardBody);
+			matchOutput.appendChild(cardDiv);
+			
+
+			// newName.textContent = animalName;
+			// newName.href = 'https://www.petfinder.com/petdetail/' + id;
+
+			// var newImg = document.createElement('img');
+			// newImg.src = img;
+
+			// var list = document.createElement("div");
+			// list.setAttribute("id", "List");
+			// document.body.appendChild(list);
+
+			// newDiv.appendChild(newName);
+			// list.appendChild(newDiv);
+			// list.appendChild(newImg);
 		};
 	}
 
