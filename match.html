@@ -4,136 +4,157 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy"
+        crossorigin="anonymous">
     <title>Find Your Match!</title>
 </head>
 
 <body>
     <header>
-            <header>
-                    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                        <a class="navbar-brand" href="#">Front End Project</a>
-                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                            aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
-                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                            <ul class="navbar-nav mr-auto">
-                                <li class="nav-item pr-3">
-                                    <a href="index.html">Home</a>
-                                </li>
-                                <li class="nav-item pr-3">
-                                    <a href="match.html">Get Your Match</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="giphy.html">Get a Gif</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </nav>
-                </header>
+        <header>
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <a class="navbar-brand" href="#">Front End Project</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item pr-3">
+                            <a href="index.html">Home</a>
+                        </li>
+                        <li class="nav-item pr-3">
+                            <a href="match.html">Get Your Match</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="giphy.html">Get a Gif</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
     </header>
 
     <main>
-        <section>
-            <h1>Find Your Match!</h1>
-            <p>Are you looking for the perfect someone to share your life with? Fill out this brief questionaire to find your
-                match</p>
-        </section>
-        <form action="#" method="POST">
-            <div>
-                <label for="userName">Name: </label>
-                <input type="text" id="userName">
-            </div>
-            <div>
-                <label for="zipcode">Please enter your zipcode: </label>
-                <input type="number" id="zipcode">
-            </div>
-            <div>
-                <label>How tall are you? </label>
-                <input type="number" id="heightFeet">
-                <label for="heightFeet">feet</label>
-                <input type="number" id="heightInches">
-                <label for="heightInches">inches</label>
-            </div>
-            <div>
-                <label for="sexualPreference">Which do you prefer?</label>
-                <select id="sexualPreference" required>
-                    <option value=""> -- select an option --</option>
-                    <option value="male">Male</option>
-                    <option value="female">Female</option>
-                    <option value="either">I'm cool with either one</option>
-
-                </select>
-            </div>
-            <div>
-                    <label for="food">Your favorite type of food is:</label>
-                    <select id="food" required>
-                        <option value=""> -- select an option --</option>    
-                        <option value="Mexican">Mexican, amigo!</option>
-                        <option value="American">Good ol' American</option>
-                        <option value="Italian">Italian</option>
-                        <option value="Chinese">Chinese</option>
-                        <option value="everything">Everything!</option>
-                    </select>
+        <div class="row">
+            <section class="col-md-6">
+                <div class="p-4">
+                    <h1>Find Your Match!</h1>
+                    <p>Are you looking for the perfect someone to share your life with? Fill out this brief questionaire to
+                        find your match.
+                    </p>
                 </div>
-    
-            <div>
-                <label for="walkingStyle">Which do you prefer?</label>
-                <select id="walkingStyle">
-                    <option disabled selected> -- select an option --</option>                        
-                    <option value="beach">Long walks on the beach</option>
-                    <option value="hiking">Hiking with a best friend</option>
-                    <option value="short">Short walk to the refrigerator</option>
-                    <option value="stroll">A leisurely stroll around the neighborhood</option>
-                    <option value="skipping">Skipping!</option>
-                </select>
-            </div>
-            <div>
-                <label for="eventType">You really enjoy:</label>
-                <select id="eventType" required>
-                    <option value=""> -- select an option --</option>    
-                    <option value="theater">Attending theatrical productions</option>
-                    <option value="computer">Staying home alone playing on a computer</option>
-                    <option value="hanging">Grabbing a beer and hanging with friends</option>
-                    <option value="cosplay">Cosplay, my friend!</option>
-                    <option value="sports">Sports!</option>
-                    <option value="couch">Snuggling on the couch while watching Netflix</option>
-                </select>
-            </div>
+                </section>
+                </div>
+                <div class="row">
+                <section class="col-md-6">
+                <form class="pl-4" action="#" method="POST">
+                    <div class="form-row pb-2 mr-2">
+                        <label class="col-md-4 text-right" for="userName">Name: </label>
+                        <input class="col-md-6 form-control" type="text" id="userName">
+                    </div>
+                    <div class="form-row pb-2 mr-2">
+                        <label class="col-md-4 text-right" for="zipcode">Please enter your zipcode: </label>
+                        <input class="col-md-6 form-control" type="number" id="zipcode">
+                    </div>
+                    <div class="form-row pb-2 mr-2">
+                        <label class="col-md-4 text-right">How tall are you? </label>
+                        <div class="col-md-3">
+                            <input type="number" id="heightFeet" class="form-control">
+                            <label for="heightFeet">feet</label>
+                        </div>
+                        <div class="col-md-3">
+                            <input type="number" id="heightInches" class="form-control">
+                            <label for="heightInches">inches</label>
+                        </div>
+                    </div>
+                    <div class="form-row pb-2 mr-2">
+                        <label class="col-md-4 text-right" for="sexualPreference">Which do you prefer?</label>
+                        <select class="col-md-6 form-control" id="sexualPreference" required>
+                            <option value=""> -- select an option --</option>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                            <option value="either">I'm cool with either one</option>
 
-            <div>
-                <label for="hogwarts">Which house do you most identify with?</label>
-                <select id="hogwarts" requireds>
-                    <option value=""> -- select an option --</option>    
-                    <option value="Gryffindor">Gryffindor</option>
-                    <option value="Hufflepuff">Hufflepuff</option>
-                    <option value="Ravenclaw">Ravenclaw</option>
-                    <option value="Slytherin">Slytherin</option>
-                </select>
-            </div>
-            <div>
-                <label for="maintenance">You have been told that you are:</label>
-                <select id="maintenance" required>
-                    <option value=""> -- select an option --</option>    
-                    <option value="high">High Maintenance</option>
-                    <option value="low">Low Maintenance</option>
-                    <option value="no">No Maintenance</option>
-                </select>
-            </div>
+                        </select>
+                    </div>
+                    <div class="form-row pb-2 mr-2">
+                        <label class="col-md-4 text-right" for="food">Your favorite type of food is:</label>
+                        <select class="col-md-6 form-control" id="food" required>
+                            <option value=""> -- select an option --</option>
+                            <option value="Mexican">Mexican, amigo!</option>
+                            <option value="American">Good ol' American</option>
+                            <option value="Italian">Italian</option>
+                            <option value="Chinese">Chinese</option>
+                            <option value="everything">Everything!</option>
+                        </select>
+                    </div>
 
- 
-            <button type="button" id="matchButton">Get Your Match!</button>
-        </form>
+                    <div class="form-row pb-2 mr-2">
+                        <label class="col-md-4 text-right" for="walkingStyle">Which do you prefer?</label>
+                        <select class="col-md-6 form-control" id="walkingStyle">
+                            <option disabled selected> -- select an option --</option>
+                            <option value="beach">Long walks on the beach</option>
+                            <option value="hiking">Hiking with a best friend</option>
+                            <option value="short">Short walk to the refrigerator</option>
+                            <option value="stroll">A leisurely stroll around the neighborhood</option>
+                            <option value="skipping">Skipping!</option>
+                        </select>
+                    </div>
+                    <div class="form-row pb-2 mr-2">
+                        <label class="col-md-4 text-right" for="eventType">You really enjoy:</label>
+                        <select class="col-md-6 form-control" id="eventType" required>
+                            <option value=""> -- select an option --</option>
+                            <option value="theater">Attending theatrical productions</option>
+                            <option value="computer">Staying home alone playing on a computer</option>
+                            <option value="hanging">Grabbing a beer and hanging with friends</option>
+                            <option value="cosplay">Cosplay, my friend!</option>
+                            <option value="sports">Sports!</option>
+                            <option value="couch">Snuggling on the couch while watching Netflix</option>
+                        </select>
+                    </div>
 
-        <div id="matchOutput"></div>
+                    <div class="form-row pb-2 mr-2">
+                        <label class="col-md-4 text-right" for="hogwarts">Which house do you most identify with?</label>
+                        <select class="col-md-6 form-control" id="hogwarts" requireds>
+                            <option value=""> -- select an option --</option>
+                            <option value="Gryffindor">Gryffindor</option>
+                            <option value="Hufflepuff">Hufflepuff</option>
+                            <option value="Ravenclaw">Ravenclaw</option>
+                            <option value="Slytherin">Slytherin</option>
+                        </select>
+                    </div>
+                    <div class="form-row pb-2 mr-2">
+                        <label class="col-md-4 text-right" for="maintenance">You have been told that you are:</label>
+                        <select class="col-md-6 form-control" id="maintenance" required>
+                            <option value=""> -- select an option --</option>
+                            <option value="high">High Maintenance</option>
+                            <option value="low">Low Maintenance</option>
+                            <option value="no">No Maintenance</option>
+                        </select>
+                    </div>
+
+
+                    <button type="button" id="matchButton">Get Your Match!</button>
+                </form>
+            </section>
+            <aside class="col-md-6">
+
+                <div id="matchOutput">This is where the output goes</div>
+
+            </aside>
+
+        </div>
     </main>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4"
+        crossorigin="anonymous"></script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="js/match.js"></script>
- </body>
+</body>
 
 </html>
