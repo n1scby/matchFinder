@@ -1,1 +1,7 @@
-.cardStyle {width: 25%;}
+.cardStyle {width: 35%;
+            margin-left: 5rem;
+            margin-bottom: 1rem;}
+
+.topTitle {background-color: rgb(233, 16, 45);
+            text-align: center;
+            color: white;}

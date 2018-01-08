@@ -37,39 +37,39 @@
     </header>
 
     <main>
-            <div class="p-3 mb-2 ">
+            <div class="p-3 mb-2 topTitle">
                     <h1>Find Your Match!</h1>
                     <p>Are you looking for the perfect someone to share your life with? Fill out this brief questionaire to
                         find your match.
                     </p>
                 </div>
             
-        <div class="row">
+        <div class="row pt-4">
               
             <section class="col-md-6">
                 
                 <form class="pl-4" action="#" method="POST">
                     <div class="row pb-2 mr-2">
-                        <label class="col-md-5 text-right" for="userName">Name: </label>
+                        <label class="col-md-5 text-md-right pl-0" for="userName">Name: </label>
                         <input class="col-md-6 form-control" type="text" id="userName">
                     </div>
                     <div class="row pb-2 mr-2">
-                        <label class="col-md-5 text-right" for="zipcode">Please enter your zipcode: </label>
+                        <label class="col-md-5 text-md-right pl-0" for="zipcode">Please enter your zipcode: </label>
                         <input class="col-md-6 form-control width-3" type="number" id="zipcode" min="1" max="99999">
                     </div>
                     <div class="row pb-2 mr-2">
-                        <label class="col-md-5 text-right">How tall are you? </label>
+                        <label class="col-md-5 text-md-right pl-0">How tall are you? </label>
                         <div class="col-md-3 pl-0">
                             <input type="number" id="heightFeet" class=" w-50 form-control d-inline">
                             <label for="heightFeet maxlength="1">feet</label>
                         </div>
-                        <div class="col-md-3 ">
+                        <div class="col-md-3 pl-0">
                             <input type="number" id="heightInches" class="w-50 form-control d-inline" maxlength="2">
                             <label for="heightInches">inches</label>
                         </div>
                     </div>
                     <div class="row pb-2 mr-2">
-                        <label class="col-md-5 text-right" for="sexualPreference">Which do you prefer?</label>
+                        <label class="col-md-5 text-md-right pl-0" for="sexualPreference">Which do you prefer?</label>
                         <select class="col-md-6 form-control" id="sexualPreference" required>
                             <option value=""> -- select an option --</option>
                             <option value="male">Male</option>
@@ -79,7 +79,7 @@
                         </select>
                     </div>
                     <div class="row pb-2 mr-2">
-                        <label class="col-md-5 text-right" for="food">Your favorite type of food is:</label>
+                        <label class="col-md-5 text-md-right pl-0" for="food">Your favorite type of food is:</label>
                         <select class="col-md-6 form-control" id="food" required>
                             <option value=""> -- select an option --</option>
                             <option value="Mexican">Mexican, amigo!</option>
@@ -91,7 +91,7 @@
                     </div>
 
                     <div class="row pb-2 mr-2">
-                        <label class="col-md-5 text-right" for="walkingStyle">Which do you prefer?</label>
+                        <label class="col-md-5 text-md-right pl-0" for="walkingStyle">Which do you prefer?</label>
                         <select class="col-md-6 form-control" id="walkingStyle">
                             <option disabled selected> -- select an option --</option>
                             <option value="beach">Long walks on the beach</option>
@@ -102,7 +102,7 @@
                         </select>
                     </div>
                     <div class="row pb-2 mr-2">
-                        <label class="col-md-5 text-right" for="eventType">You really enjoy:</label>
+                        <label class="col-md-5 text-md-right pl-0" for="eventType">You really enjoy:</label>
                         <select class="col-md-6 form-control" id="eventType" required>
                             <option value=""> -- select an option --</option>
                             <option value="theater">Attending theatrical productions</option>
@@ -115,7 +115,7 @@
                     </div>
 
                     <div class="row pb-2 mr-2">
-                        <label class="col-md-5 text-right" for="hogwarts">Which house do you most identify with?</label>
+                        <label class="col-md-5 text-md-right pl-0" for="hogwarts">Which house do you most identify with?</label>
                         <select class="col-md-6 form-control" id="hogwarts" requireds>
                             <option value=""> -- select an option --</option>
                             <option value="Gryffindor">Gryffindor</option>
@@ -125,7 +125,7 @@
                         </select>
                     </div>
                     <div class="row pb-2 mr-2">
-                        <label class="col-md-5 text-right" for="maintenance">You have been told that you are:</label>
+                        <label class="col-md-5 text-md-right pl-0" for="maintenance">You have been told that you are:</label>
                         <select class="col-md-6 form-control" id="maintenance" required>
                             <option value=""> -- select an option --</option>
                             <option value="high">High Maintenance</option>
@@ -135,7 +135,10 @@
                     </div>
 
 
-                    <button type="button" id="matchButton">Get Your Match!</button>
+                    <button type="button" id="matchButton">Get Your Matches!</button>
+                    <button type="button" id="luckyButton">I feel lucky!</button>
+                    <button type="button" id="clearButton">Clear Matches</button>
+                    
                 </form>
             </section>
             <aside id="matchOutput"  class="col-md-6" >            

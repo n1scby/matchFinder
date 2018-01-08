@@ -2,6 +2,8 @@
 (function () {
 	var userName = document.getElementById("userName");
 	var matchButton = document.getElementById("matchButton");
+	var clearButton = document.getElementById("clearButton");
+	var luckyButton = document.getElementById("luckyButton");
 	var userName = document.getElementById("userName");
 	var heightFeet = document.getElementById("heightFeet");
 	var heightInches = document.getElementById("heightInches");
@@ -21,6 +23,7 @@
 	var dogBreed = '';
 	var animalSex = '';
 	var matchLocation = "";
+	var noImage = "images/noImage.jpg";
 
 	matchButton.addEventListener("click", function () {
 		// determine values to pass
@@ -32,7 +35,7 @@
 		getLocation();
 
 
-		// Within $.ajax{...} is where we fill out our query 
+		// Fill out the query 
 		$.ajax({
 			url: url,
 			jsonp: "callback",
@@ -51,7 +54,6 @@
 				format: 'json'
 			},
 			// Handle the response back from Petfinder
-			//			success: function(response) {
 			success: function (response) {
 				displayMatch(response);
 			},
@@ -64,6 +66,10 @@
 		});
 
 	});
+
+	clearButton.addEventListener("click", function(){
+		matchOutput.innerHTML = "";
+	})
 
 	var getAnimalType = function getAnimalType() {
 		if (eventType.value == "theater") {
@@ -180,34 +186,27 @@
 
 	var displayMatch = function displayMatch(response) {
 		if (response.petfinder.pets == undefined || response.petfinder.pets.pet == undefined) {
-			matchOutput.innerHTML = "Oh no.  NO matches!";
+			matchOutput.innerHTML = "Oh no!  No matches!";
 			lastOffset = 0;
 
 		} else {
 			console.log(response); // debugging
 			var animalName = response.petfinder.pets.pet.name.$t;
 		if (response.petfinder.pets.pet.media.photos == undefined){
-		   img = "";
+		   img = noImage;
 		} else
 		{
-			var img = response.petfinder.pets.pet.media.photos.photo[1].$t;
+			var img = response.petfinder.pets.pet.media.photos.photo[3].$t;
 			
 		}
 			var id = response.petfinder.pets.pet.id.$t;
 			lastOffset = response.petfinder.lastOffset.$t;
 
-		// Create Row
-			var newRow = document.createElement("div");
-			newRow.classList.add("cardStyle")
-		//	newRow.classList.add("row");
-
+		
 			// Create Card Div
-		//	var newName = document.createElement('a');
 			var cardDiv = document.createElement('div');
 			cardDiv.classList.add("card");
 			cardDiv.classList.add("cardStyle");
-		//	cardDiv.classList.add("offset-md-1");
-		//	cardDiv.classList.add("col-md-5");
 
 			// Create img for card
 			var animalPic = document.createElement("img");
@@ -245,19 +244,7 @@
 			matchOutput.appendChild(cardDiv);
 			
 
-			// newName.textContent = animalName;
-			// newName.href = 'https://www.petfinder.com/petdetail/' + id;
-
-			// var newImg = document.createElement('img');
-			// newImg.src = img;
-
-			// var list = document.createElement("div");
-			// list.setAttribute("id", "List");
-			// document.body.appendChild(list);
-
-			// newDiv.appendChild(newName);
-			// list.appendChild(newDiv);
-			// list.appendChild(newImg);
+			
 		};
 	}
 
