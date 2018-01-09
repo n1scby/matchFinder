@@ -14,6 +14,7 @@
 	var matchOutput = document.getElementById("matchOutput");
 	var food = document.getElementById("food");
 	var moreButton = document.getElementById("moreButton");
+	var errorOutput = document.getElementById("errorOutput");
 	var url = 'http://api.petfinder.com/pet.find';
 	var apiKey = '8df848db72f6484bc7856f389d706dcc';
 	var lastOffset = 0;
@@ -24,8 +25,13 @@
 	var animalSex = '';
 	var matchLocation = "";
 	var noImage = "images/noImage.jpg";
+	var formErrMsg = "";
 
 	matchButton.addEventListener("click", function () {
+		errorOutput.classList.add("d-none");
+		// validate form entry
+		formErrMsg = validateForm();
+        if (formErrMsg == ""){
 		// determine values to pass
 		matchOutput.innerHTML = "";
 		getAnimalType();
@@ -36,6 +42,12 @@
 		getLocation();
 		lastOffset = 0;
 		getMatchData();
+		}
+		else{
+			errorOutput.innerHTML = formErrMsg;
+			errorOutput.classList.remove("d-none");
+
+		}
 
 
 
@@ -46,6 +58,40 @@
 		window.scrollTo(0,0);
 		getMatchData();
 	})
+
+    var validateForm = function validateForm(){
+		var formErr = "";
+		if (userName.value == "") {
+			formErr = "Please enter a name. <br>";
+		}
+		if (heightFeet.value == 0 || heightFeet.value < 0 || heightInches.value < 0) {
+			formErr += "Please enter a valid height. <br>";
+		}
+		if (sexualPreference.value == "") {
+			formErr += "Please select a gender preference. <br>";
+		}
+		if (zipcode.value <= 0) {
+			formErr += "Please enter a zipcode. <br>";
+		}
+		if (walkingStyle.value == "") {
+			formErr += "Please select a walking style. <br>";
+		}
+		if (eventType.value == "") {
+			formErr += "Please select an enjoyable event. <br>";
+		}
+		if (food.value == "") {
+			formErr += "Please select your favorite food. <br>";
+		}
+		if (hogwarts.value == "") {
+			formErr += "Please select a house. <br>";
+		}
+		if (maintenance.value == "") {
+			formErr += "Please select a maintenance level. <br>";
+		}
+		return formErr;
+	}
+
+
 
 
 	var getMatchData = function getMatchData(){
@@ -82,6 +128,7 @@
 
 	clearButton.addEventListener("click", function () {
 		matchOutput.innerHTML = "";
+		errorOutput.classList.add("d-none");		
 		moreButton.classList.add("d-none");
 	})
 
@@ -154,14 +201,15 @@
 
 
 
-		// If you are tall, then you get either XL or L.
-		if (heightFeet.value >= 6) {
-			if (heightInches.value >= 5) {
-				animalSize = "XL";
-			} else {
+		// If you are tall (and not hight maint), then you get either XL or L.
+		if (heightFeet.value == 6 && heightInches.value <= 5 ) {
 				animalSize = "L";
+			} else {
+				if (heightFeet.value >= 6) {
+				animalSize = "XL";
+				}
 			}
-		}
+		
 		return;
 
 	}

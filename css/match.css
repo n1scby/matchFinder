@@ -1,6 +1,4 @@
-.cardStyle {width: 35%;
-            margin-left: 10rem;
-            margin-bottom: 1rem;}
+
 
 .topTitle {background-color: rgb(233, 16, 45);
             text-align: center;
@@ -13,6 +11,7 @@ form {padding-top: 2rem;
     border-radius: 1rem;
     margin-top: 1rem;
     margin-left: 1rem;
+    margin-right: 1rem;
 }
 
 button {background-color: rgb(26, 115, 156);
@@ -24,3 +23,43 @@ button {background-color: rgb(26, 115, 156);
 button:hover { background-color: rgb(16, 71, 100);}
 button:focus {outline: none;
              border-color: white;}
+
+#errorOutput {background-color: rgb(253, 218, 225);
+                color: rgb(250, 7, 51);
+                margin-left: 3rem;
+                margin-right: 3rem;
+                margin-top: 1rem;
+                margin-bottom: 1rem;
+                padding: 1rem;
+                border: 1pt solid rgb(252, 200, 210);
+                border-radius: .5rem;
+                align-content: center;
+            }
+
+
+@media(min-width: 768px) {
+    #matchOutput {      
+        max-height: 70%;
+        overflow-y: auto;
+        width: 50%;
+        margin: auto;
+    }
+    .cardStyle {width: 95%;
+        margin-bottom: 1rem;}
+}
+
+@media(max-width: 767px) {
+    #matchOutput {
+        align-content: center;
+    }
+    .cardStyle {
+        max-width: 50%;
+        margin: auto;
+        margin-top: 1rem;
+    }
+       
+
+}
+
+
+

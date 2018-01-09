@@ -48,7 +48,8 @@
               
             <section class="col-md-6 pr-0">
                 
-                <form class="pl-4" action="#" method="POST">
+                <form class="pl-4 mr-1" action="#" method="POST">
+                    <div id="errorOutput" class="d-none"></div>
                     <div class="row pb-2 mr-2">
                         <label class="col-md-5 text-md-right pl-0" for="userName">Name: </label>
                         <input class="col-md-6 form-control" type="text" id="userName">
@@ -93,7 +94,7 @@
                     <div class="row pb-2 mr-2">
                         <label class="col-md-5 text-md-right pl-0" for="walkingStyle">Which do you prefer?</label>
                         <select class="col-md-6 form-control" id="walkingStyle">
-                            <option disabled selected> -- select an option --</option>
+                            <option value=""> -- select an option --</option>
                             <option value="beach">Long walks on the beach</option>
                             <option value="hiking">Hiking with a best friend</option>
                             <option value="short">Short walk to the refrigerator</option>
@@ -141,11 +142,12 @@
                     </div>
                 </form>
             </section>
-            <aside id="matchOutput"  class="col-md-6 pt-2 pl-0" >            
-
+            <aside class="col-md-6 pt-2 pl-0" >  
+                <div id="matchOutput"></div>          
+                <button id="moreButton" class="offset-md-8 col-md-2 d-none">Look for More Matches!</button>
+                
 
             </aside>
-                <button id="moreButton" class="offset-md-8 col-md-2 d-none">Look for More Matches!</button>
 
         </div>
     </main>
