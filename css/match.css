@@ -1,7 +1,26 @@
 .cardStyle {width: 35%;
-            margin-left: 5rem;
+            margin-left: 10rem;
             margin-bottom: 1rem;}
 
 .topTitle {background-color: rgb(233, 16, 45);
             text-align: center;
             color: white;}
+
+form {padding-top: 2rem;
+      padding-bottom: 2rem;
+    background-color: rgb(233, 232, 232);
+    border: 1px solid lightgray;
+    border-radius: 1rem;
+    margin-top: 1rem;
+    margin-left: 1rem;
+}
+
+button {background-color: rgb(26, 115, 156);
+    color: white;
+    border: 1pt solid rgb(26,115,156);
+    border-radius: .5rem;
+    padding: .5rem;
+    }
+button:hover { background-color: rgb(16, 71, 100);}
+button:focus {outline: none;
+             border-color: white;}

@@ -3,7 +3,6 @@
 	var userName = document.getElementById("userName");
 	var matchButton = document.getElementById("matchButton");
 	var clearButton = document.getElementById("clearButton");
-	var luckyButton = document.getElementById("luckyButton");
 	var userName = document.getElementById("userName");
 	var heightFeet = document.getElementById("heightFeet");
 	var heightInches = document.getElementById("heightInches");
@@ -14,6 +13,7 @@
 	var maintenance = document.getElementById("maintenance");
 	var matchOutput = document.getElementById("matchOutput");
 	var food = document.getElementById("food");
+	var moreButton = document.getElementById("moreButton");
 	var url = 'http://api.petfinder.com/pet.find';
 	var apiKey = '8df848db72f6484bc7856f389d706dcc';
 	var lastOffset = 0;
@@ -27,48 +27,62 @@
 
 	matchButton.addEventListener("click", function () {
 		// determine values to pass
+		matchOutput.innerHTML = "";
 		getAnimalType();
 		getAnimalSex();
 		getAnimalAge();
 		getAnimalSize();
 		getDogBreed();
 		getLocation();
+		lastOffset = 0;
+		getMatchData();
 
 
-		// Fill out the query 
-		$.ajax({
-			url: url,
-			jsonp: "callback",
-			dataType: "jsonp",
-			data: {
-				key: apiKey,
-				animal: animalType,
-				size: animalSize,
-				sex: animalSex,
-				age: animalAge,
-				breed: dogBreed,
-				count: 1,
-				offset: lastOffset,
-				location: matchLocation,
-				output: 'basic',
-				format: 'json'
-			},
-			// Handle the response back from Petfinder
-			success: function (response) {
-				displayMatch(response);
-			},
-			error: function (request, error) {
-				console.log("Request: " + JSON.stringify(request) + "  Error: " + error);
-				match.Output('Sorry, No Matches at this Time.');
-			}
-
-
-		});
 
 	});
 
-	clearButton.addEventListener("click", function(){
+	moreButton.addEventListener("click", function() {
 		matchOutput.innerHTML = "";
+		window.scrollTo(0,0);
+		getMatchData();
+	})
+
+
+	var getMatchData = function getMatchData(){
+				// Fill out the query 
+				$.ajax({
+					url: url,
+					jsonp: "callback",
+					dataType: "jsonp",
+					data: {
+						key: apiKey,
+						animal: animalType,
+						size: animalSize,
+						sex: animalSex,
+						age: animalAge,
+						breed: dogBreed,
+						count: 10,
+						offset: lastOffset,
+						location: matchLocation,
+						output: 'basic',
+						format: 'json'
+					},
+					// Handle the response back from Petfinder
+					success: function (response) {
+						processMatches(response);
+					},
+					error: function (request, error) {
+						console.log("Request: " + JSON.stringify(request) + "  Error: " + error);
+						match.Output('Sorry, No Matches at this Time.');
+					}
+		
+		
+				});
+	}
+
+	clearButton.addEventListener("click", function () {
+		matchOutput.innerHTML = "";
+		moreButton.classList.add("d-none");
 	})
 
 	var getAnimalType = function getAnimalType() {
@@ -115,12 +129,12 @@
 	}
 
 
-	var getAnimalSex = function getAnimalSex(){
-		if (sexualPreference.value == "male"){
+	var getAnimalSex = function getAnimalSex() {
+		if (sexualPreference.value == "male") {
 			animalSex = "M";
 			return;
 		}
-		if (sexualPreference.value == "female"){
+		if (sexualPreference.value == "female") {
 			animalSex = "F";
 			return;
 		}
@@ -138,7 +152,7 @@
 			return;
 		}
 
-	
+
 
 		// If you are tall, then you get either XL or L.
 		if (heightFeet.value >= 6) {
@@ -152,9 +166,8 @@
 
 	}
 
-	var getLocation = function getLocation(){
-		if (zipcode.value < 99999 && zipcode.value > 1)
-		{
+	var getLocation = function getLocation() {
+		if (zipcode.value < 99999 && zipcode.value > 1) {
 			matchLocation = zipcode.value;
 
 		}
@@ -181,28 +194,89 @@
 		return;
 	}
 
+	var Match = function Match(name, size, sex, breed, age, type, image, id) {
+		this.matchName = name;
+		this.matchSize = size;
+		this.matchSex = sex;
+		this.matchBreed = breed;
+		this.matchAge = age;
+		this.matchType = type;
+		this.matchImage = image;
+		this.matchID = id;
+	}
 
+	// Load the matches into an array
 
+	var loadMatches = function loadMatches(matchData) {
+		var matchArray = [];
+		matchData.petfinder.pets.pet.forEach(function (pet, idx, arry) {
+		// verify photo is defined
+		
+			if (pet.media.photos == undefined) {
+				var img = noImage;
+			} else {
+				var img = pet.media.photos.photo[3].$t;
+			}
 
-	var displayMatch = function displayMatch(response) {
+			// verify breed is defined
+			var breed = "";
+			if (pet.breeds.breed[0] == undefined) {
+				breed = pet.breeds.breed.$t;
+			} else
+			{
+				breed = pet.breeds.breed[0].$t;
+			}
+
+			var newMatch = new Match(pet.name.$t, pet.size.$t, pet.sex.$t, breed, pet.age.$t, pet.animal.$t, img, pet.id.$t);
+			matchArray.push(newMatch);
+		});
+		return matchArray;
+	}
+
+	var processMatches = function processMatches(response) {
 		if (response.petfinder.pets == undefined || response.petfinder.pets.pet == undefined) {
 			matchOutput.innerHTML = "Oh no!  No matches!";
 			lastOffset = 0;
-
 		} else {
-			console.log(response); // debugging
-			var animalName = response.petfinder.pets.pet.name.$t;
-		if (response.petfinder.pets.pet.media.photos == undefined){
-		   img = noImage;
-		} else
-		{
-			var img = response.petfinder.pets.pet.media.photos.photo[3].$t;
+			var matchList = loadMatches(response);
+			// if lucky then get random number based on length of matchlist else....
+
+			matchList.forEach(function (match, idx, arr) {
+				displayMatch(match);
+			})
+
+			if (matchList.length > 9){
+
+				moreButton.classList.remove("d-none");
+				lastOffset = response.petfinder.lastOffset.$t;		
+			
+			} else
+			{
+				moreButton.classList.add("d-none");
+				lastOffset = 0;
+			}
+
 			
 		}
-			var id = response.petfinder.pets.pet.id.$t;
-			lastOffset = response.petfinder.lastOffset.$t;
+	}
+		var displayMatch = function displayMatch(match) {
+			// if (response.petfinder.pets == undefined || response.petfinder.pets.pet == undefined) {
+			// 	matchOutput.innerHTML = "Oh no!  No matches!";
+			// 	lastOffset = 0;
 
-		
+			// } else {
+			// 	console.log(response); // debugging
+			// 	var animalName = response.petfinder.pets.pet.name.$t;
+			// 	if (response.petfinder.pets.pet.media.photos == undefined) {
+			// 		img = noImage;
+			// 	} else {
+			// 		var img = response.petfinder.pets.pet.media.photos.photo[3].$t;
+
+			// 	}
+			// 	var id = response.petfinder.pets.pet.id.$t;
+
+
+			
 			// Create Card Div
 			var cardDiv = document.createElement('div');
 			cardDiv.classList.add("card");
@@ -210,7 +284,7 @@
 
 			// Create img for card
 			var animalPic = document.createElement("img");
-			animalPic.src = img;
+			animalPic.src = match.matchImage;
 			animalPic.classList.add("card-img-top");
 
 			// Create card body
@@ -220,19 +294,21 @@
 			// Create card title
 			var cardTitle = document.createElement("h5");
 			cardTitle.classList.add("card-title");
-			cardTitle.innerText = animalName;
+			cardTitle.innerText = match.matchName;
 
 			// Create paragraph with animal description
 			var cardInfo = document.createElement("p");
 			cardInfo.classList.add("card-text");
+			cardInfo.innerHTML = "Gender: " + match.matchSex + "<br>Size: " + match.matchSize + "<br>Age: " + match.matchAge + "<br>Breed: " + match.matchBreed;
 
 
 			// Create link to Animal Info
 			var cardLink = document.createElement("a");
-			cardLink.href= 'https://www.petfinder.com/petdetail/' + id;
+			cardLink.href = 'https://www.petfinder.com/petdetail/' + match.matchID;
+			cardLink.target = "_blank";
 			cardLink.innerText = "More Info";
-			cardLink.classList.add("btn");
-			cardLink.classList.add("btn-primary");
+			//	cardLink.classList.add("btn");
+			//	cardLink.classList.add("btn-primary");
 
 			// Add elements to Aside
 
@@ -242,10 +318,10 @@
 			cardBody.appendChild(cardLink);
 			cardDiv.appendChild(cardBody);
 			matchOutput.appendChild(cardDiv);
-			
 
-			
-		};
+
+
+		
 	}
 
 
