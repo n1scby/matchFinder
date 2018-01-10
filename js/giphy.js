@@ -6,6 +6,7 @@
     var giphyURL = "http://api.giphy.com/v1/gifs/translate";
     var gifOutput = document.getElementById("gifOutput");
     var resetButton = document.getElementById("resetButton");
+    var gifArray = [];
     
 
     var httpRequest;
@@ -54,15 +55,26 @@
     })
 
     resetButton.addEventListener("click", function(){
+        gifArray = [];  //clear the array
         gifOutput.innerHTML = "";
         searchText.value = "";
     })
 
 var outputGif = function outputGif(data){
     var gifResponse = JSON.parse(data);
-    var newGif = document.createElement("img");
-    newGif.src = gifResponse.data.images.original.url;
-    gifOutput.appendChild(newGif);
+
+    // insert the response into the first positin of the array (newest is first)
+    gifArray.unshift(gifResponse);
+    gifOutput.innerHTML="";
+    gifArray.forEach(function(gifRes, idx, arr){
+        var newGif = document.createElement("img");
+        newGif.src = gifRes.data.images.original.url;
+        newGif.classList.add("m-2");
+        newGif.classList.add("newGif");
+        gifOutput.appendChild(newGif);
+
+    });
+    
 }
     
 })()

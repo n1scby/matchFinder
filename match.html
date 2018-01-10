@@ -12,42 +12,40 @@
 
 <body>
     <header>
-        <header>
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <a class="navbar-brand" href="#">Front End Project</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item pr-3">
-                            <a href="index.html">Home</a>
-                        </li>
-                        <li class="nav-item pr-3">
-                            <a href="match.html">Get Your Match</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="giphy.html">Get a Gif</a>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
-        </header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="index.html">Front End Project</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item pr-3">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item pr-3">
+                        <a class="nav-link" href="match.html">Get Your Match</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="giphy.html">Get a Gif</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
     </header>
 
     <main>
-            <div class="p-3 topTitle">
-                    <h1>Find Your Match!</h1>
-                    <p>Are you looking for the perfect someone to share your life with? Fill out this brief questionaire to
-                        find your match.
-                    </p>
-                </div>
-            
-        <div class="row">
-              
+        <div class="pt-3 pb-3 topTitle">
+            <h1>Find Your Match!</h1>
+            <p>Are you looking for the perfect someone to share your life with? Fill out this brief questionaire to find your
+                match.
+            </p>
+        </div>
+
+        <div class="row ml-0 mr-0">
+
             <section class="col-md-6 pr-0">
-                
+
                 <form class="pl-4 mr-1" action="#" method="POST">
                     <div id="errorOutput" class="d-none"></div>
                     <div class="row pb-2 mr-2">
@@ -62,14 +60,14 @@
                         <label class="col-md-5 text-md-right pl-0">How tall are you? </label>
                         <div class="col-md-3 pl-0">
                             <input type="number" id="heightFeet" class=" w-50 form-control d-inline">
-                            <label for="heightFeet maxlength="1">feet</label>
+                            <label for="heightFeet maxlength=" 1 ">feet</label>
                         </div>
-                        <div class="col-md-3 pl-0">
-                            <input type="number" id="heightInches" class="w-50 form-control d-inline" maxlength="2">
+                        <div class="col-md-3 pl-0 ">
+                            <input type="number" id="heightInches" class="w-50 form-control d-inline" maxlength="2 ">
                             <label for="heightInches">inches</label>
                         </div>
                     </div>
-                    <div class="row pb-2 mr-2">
+                    <div class="row pb-2 mr-2 ">
                         <label class="col-md-5 text-md-right pl-0" for="sexualPreference">Which do you prefer?</label>
                         <select class="col-md-6 form-control" id="sexualPreference" required>
                             <option value=""> -- select an option --</option>
@@ -79,9 +77,9 @@
 
                         </select>
                     </div>
-                    <div class="row pb-2 mr-2">
-                        <label class="col-md-5 text-md-right pl-0" for="food">Your favorite type of food is:</label>
-                        <select class="col-md-6 form-control" id="food" required>
+                    <div class="row pb-2 mr-2 ">
+                        <label class="col-md-5 text-md-right pl-0 " for="food">Your favorite type of food is:</label>
+                        <select class="col-md-6 form-control " id="food" required>
                             <option value=""> -- select an option --</option>
                             <option value="Mexican">Mexican, amigo!</option>
                             <option value="American">Good ol' American</option>
@@ -92,8 +90,8 @@
                     </div>
 
                     <div class="row pb-2 mr-2">
-                        <label class="col-md-5 text-md-right pl-0" for="walkingStyle">Which do you prefer?</label>
-                        <select class="col-md-6 form-control" id="walkingStyle">
+                        <label class="col-md-5 text-md-right pl-0 " for="walkingStyle">Which do you prefer?</label>
+                        <select class="col-md-6 form-control " id="walkingStyle">
                             <option value=""> -- select an option --</option>
                             <option value="beach">Long walks on the beach</option>
                             <option value="hiking">Hiking with a best friend</option>
@@ -102,9 +100,9 @@
                             <option value="skipping">Skipping!</option>
                         </select>
                     </div>
-                    <div class="row pb-2 mr-2">
-                        <label class="col-md-5 text-md-right pl-0" for="eventType">You really enjoy:</label>
-                        <select class="col-md-6 form-control" id="eventType" required>
+                    <div class="row pb-2 mr-2 ">
+                        <label class="col-md-5 text-md-right pl-0 " for="eventType">You really enjoy:</label>
+                        <select class="col-md-6 form-control " id="eventType" required>
                             <option value=""> -- select an option --</option>
                             <option value="theater">Attending theatrical productions</option>
                             <option value="computer">Staying home alone playing on a computer</option>
@@ -116,7 +114,7 @@
                     </div>
 
                     <div class="row pb-2 mr-2">
-                        <label class="col-md-5 text-md-right pl-0" for="hogwarts">Which house do you most identify with?</label>
+                        <label class="col-md-5 text-md-right pl-0 " for="hogwarts">The house do you most identify with:</label>
                         <select class="col-md-6 form-control" id="hogwarts" requireds>
                             <option value=""> -- select an option --</option>
                             <option value="Gryffindor">Gryffindor</option>
@@ -136,16 +134,16 @@
                     </div>
 
                     <div class="mt-3 d-flex justify-content-center">
-                    <button type="button" class="mr-3" id="matchButton">Get Your Matches!</button>
+                    <button type="button" class="mr-3 " id="matchButton">Get Your Matches!</button>
 
-                    <button type="button" class="" id="clearButton">Clear Matches</button>
+                    <button type="button" class=" " id="clearButton">Clear Matches</button>
                     </div>
                 </form>
             </section>
-            <aside class="col-md-6 pt-2 pl-0" >  
+            <aside class="col-md-6 pt-2 pl-0 pr-0" >  
                 <div id="matchOutput" class="mt-1 d-none"></div>    
                 <div>      
-                <button id="moreButton" class="d-none mt-2 offset-md-4 col-md-4 ">Look for More Matches!</button>
+                <button id="moreButton" class="d-none mt-2 offset-md-4 col-md-4">Look for More Matches!</button>
                 </div>
                 
 
@@ -153,15 +151,15 @@
 
         </div>
     </main>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-        crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4"
-        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js " integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN "
+        crossorigin="anonymous "></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js " integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q "
+        crossorigin="anonymous "></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js " integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4 "
+        crossorigin="anonymous "></script>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="js/match.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js "></script>
+    <script src="js/match.js "></script>
 </body>
 
 </html>
