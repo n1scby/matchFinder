@@ -29,6 +29,8 @@
 
 	matchButton.addEventListener("click", function () {
 		errorOutput.classList.add("d-none");
+		matchOutput.classList.add("d-none");
+		
 		// validate form entry
 		formErrMsg = validateForm();
         if (formErrMsg == ""){
@@ -55,7 +57,12 @@
 
 	moreButton.addEventListener("click", function() {
 		matchOutput.innerHTML = "";
-		window.scrollTo(0,0);
+		moreButton.classList.add("d-none");
+		matchOutput.scrollTop = 0;
+		matchOutput.classList.add("d-none");	
+	//	window.scrollTo(0,0);
+	//	matchOutput.scrollTop = 0;
+	//	document.documentElement.scrollTop = 0;
 		getMatchData();
 	})
 
@@ -130,6 +137,8 @@
 		matchOutput.innerHTML = "";
 		errorOutput.classList.add("d-none");		
 		moreButton.classList.add("d-none");
+		matchOutput.classList.add("d-none");
+		
 	})
 
 	var getAnimalType = function getAnimalType() {
@@ -284,6 +293,7 @@
 	var processMatches = function processMatches(response) {
 		if (response.petfinder.pets == undefined || response.petfinder.pets.pet == undefined) {
 			matchOutput.innerHTML = "Oh no!  No matches!";
+			matchOutput.classList.remove("d-none");
 			lastOffset = 0;
 		} else {
 			var matchList = loadMatches(response);
@@ -366,6 +376,7 @@
 			cardBody.appendChild(cardLink);
 			cardDiv.appendChild(cardBody);
 			matchOutput.appendChild(cardDiv);
+			matchOutput.classList.remove("d-none");
 
 
 

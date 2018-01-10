@@ -39,13 +39,17 @@ button:focus {outline: none;
 
 @media(min-width: 768px) {
     #matchOutput {      
-        max-height: 70%;
+        max-height: 68%;
         overflow-y: auto;
-        width: 50%;
-        margin: auto;
+        max-width: 50%;
+        margin: auto;         
+        border: 1pt solid lightgray;
+        border-radius: .5rem;
+        padding: 1rem;
     }
     .cardStyle {width: 95%;
         margin-bottom: 1rem;}
+    
 }
 
 @media(max-width: 767px) {
