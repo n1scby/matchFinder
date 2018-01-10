@@ -27,6 +27,7 @@
 	var noImage = "images/noImage.jpg";
 	var formErrMsg = "";
 
+	/* Match Button - validate form entries and get matches */
 	matchButton.addEventListener("click", function () {
 		errorOutput.classList.add("d-none");
 		matchOutput.classList.add("d-none");
@@ -55,14 +56,12 @@
 
 	});
 
+	/* More matches button - get the next set of matches for the entered criteria */
 	moreButton.addEventListener("click", function() {
 		matchOutput.innerHTML = "";
 		moreButton.classList.add("d-none");
 		matchOutput.scrollTop = 0;
 		matchOutput.classList.add("d-none");	
-	//	window.scrollTo(0,0);
-	//	matchOutput.scrollTop = 0;
-	//	document.documentElement.scrollTop = 0;
 		getMatchData();
 	})
 
@@ -210,7 +209,7 @@
 
 
 
-		// If you are tall (and not hight maint), then you get either XL or L.
+		// If you are tall (and not high maint), then you get either XL or L.
 		if (heightFeet.value == 6 && heightInches.value <= 5 ) {
 				animalSize = "L";
 			} else {
@@ -292,13 +291,11 @@
 
 	var processMatches = function processMatches(response) {
 		if (response.petfinder.pets == undefined || response.petfinder.pets.pet == undefined) {
-			matchOutput.innerHTML = "Oh no!  No matches!";
+			matchOutput.innerHTML = "I'm sorry, " + userName.value + ".  We weren't able to find any matches.";
 			matchOutput.classList.remove("d-none");
 			lastOffset = 0;
 		} else {
 			var matchList = loadMatches(response);
-			// if lucky then get random number based on length of matchlist else....
-
 			matchList.forEach(function (match, idx, arr) {
 				displayMatch(match);
 			})
@@ -318,22 +315,7 @@
 		}
 	}
 		var displayMatch = function displayMatch(match) {
-			// if (response.petfinder.pets == undefined || response.petfinder.pets.pet == undefined) {
-			// 	matchOutput.innerHTML = "Oh no!  No matches!";
-			// 	lastOffset = 0;
-
-			// } else {
-			// 	console.log(response); // debugging
-			// 	var animalName = response.petfinder.pets.pet.name.$t;
-			// 	if (response.petfinder.pets.pet.media.photos == undefined) {
-			// 		img = noImage;
-			// 	} else {
-			// 		var img = response.petfinder.pets.pet.media.photos.photo[3].$t;
-
-			// 	}
-			// 	var id = response.petfinder.pets.pet.id.$t;
-
-
+				
 			
 			// Create Card Div
 			var cardDiv = document.createElement('div');
@@ -365,9 +347,13 @@
 			cardLink.href = 'https://www.petfinder.com/petdetail/' + match.matchID;
 			cardLink.target = "_blank";
 			cardLink.innerText = "More Info";
-			//	cardLink.classList.add("btn");
-			//	cardLink.classList.add("btn-primary");
 
+			// Create Icon
+			var heartIcon = '<i class="far fa-heart"></i> More Information';
+			cardLink.innerHTML = heartIcon;
+			cardLink.classList.add("moreInfo");
+
+			
 			// Add elements to Aside
 
 			cardDiv.appendChild(animalPic);
@@ -376,6 +362,7 @@
 			cardBody.appendChild(cardLink);
 			cardDiv.appendChild(cardBody);
 			matchOutput.appendChild(cardDiv);
+			matchOutput.scrollTop = 0;					
 			matchOutput.classList.remove("d-none");
 
 

@@ -55,6 +55,7 @@ button:focus {outline: none;
 @media(max-width: 767px) {
     #matchOutput {
         align-content: center;
+        margin-left:1rem;
     }
     .cardStyle {
         max-width: 50%;
@@ -62,8 +63,11 @@ button:focus {outline: none;
         margin-top: 1rem;
     }
        
-
 }
+
+.moreInfo {color: rgb(250, 7, 51);
+            }
+.moreInfo:hover {text-decoration: none;}
 
 
 
