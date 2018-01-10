@@ -5,6 +5,7 @@
     var giphyButton = document.getElementById("giphyButton");
     var giphyURL = "http://api.giphy.com/v1/gifs/translate";
     var gifOutput = document.getElementById("gifOutput");
+    var resetButton = document.getElementById("resetButton");
     
 
     var httpRequest;
@@ -43,11 +44,18 @@
 
 
     giphyButton.addEventListener("click", function(){
+     if (searchText.value != "") {
         var urlText = searchText.value.trim().replace(/ /g, "+");
     //    var url = giphyURL + '?' + 's=' + '"' + urlText + '"' + '&api_key=' + '"' + 'z7zvwGpcF6HMSSSoCOf7MUftXKryEhQi' +'"';
           var url = giphyURL + '?' + 's=' + urlText + '&api_key='  + 'z7zvwGpcF6HMSSSoCOf7MUftXKryEhQi';
 
         makeRequest(url);
+     }
+    })
+
+    resetButton.addEventListener("click", function(){
+        gifOutput.innerHTML = "";
+        searchText.value = "";
     })
 
 var outputGif = function outputGif(data){

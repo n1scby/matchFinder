@@ -1,0 +1,7 @@
+#searchSection {background-color: rgb(253, 253, 108);
+                padding: 2rem;}
+
+#searchSection h1, p, form {text-align: center;}
+
+button {vertical-align: top !important;
+        }
