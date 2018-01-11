@@ -6,4 +6,11 @@
 button {vertical-align: top !important;
         }
 
-.newGif {max-width: 25%;}
+        @media(min-width: 768px) {
+            .newGif {max-width: 30%;}
+        }
+
+        @media(max-width: 767px) {
+            .newGif {max-width: 45%;}
+        }
+        
