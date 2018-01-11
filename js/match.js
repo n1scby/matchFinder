@@ -15,7 +15,7 @@
 	var food = document.getElementById("food");
 	var moreButton = document.getElementById("moreButton");
 	var errorOutput = document.getElementById("errorOutput");
-	var url = 'http://api.petfinder.com/pet.find';
+	var url = 'https://api.petfinder.com/pet.find';
 	var apiKey = '8df848db72f6484bc7856f389d706dcc';
 	var lastOffset = 0;
 	var animalType = '';

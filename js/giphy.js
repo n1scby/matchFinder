@@ -3,7 +3,7 @@
 (function(){
     var searchText = document.getElementById("searchText");
     var giphyButton = document.getElementById("giphyButton");
-    var giphyURL = "http://api.giphy.com/v1/gifs/translate";
+    var giphyURL = "https://api.giphy.com/v1/gifs/translate";
     var gifOutput = document.getElementById("gifOutput");
     var resetButton = document.getElementById("resetButton");
     var gifArray = [];
